@@ -1,0 +1,496 @@
+<html>
+<head>
+<title> colour game </title>
+<style>
+	button
+	{
+		border:1px solid black;
+		height:100px;
+		width:100px;
+		background: white;
+	}
+	.tableElement
+	{
+		
+	}
+	.moveEle
+	{
+		border: none;
+	}
+</style>
+</head>
+<body>
+</body>
+<h1> colour game </h1>
+<table class="tableElement" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><button type="button" id="moveEle1" class="moveEle" onkeydown="moveElement1()"></button></td>
+		<td><button type="button" id="moveEle2" class="moveEle" onkeydown="moveElement2()"></button></td>
+		<td><button type="button" id="moveEle3" class="moveEle" onkeydown="moveElement()"></button></td>
+	 	<td><button type="button" id="moveEle4" class="moveEle"onkeydown="moveElement4()"></button></td>
+	 	<td><button type="button" id="moveEle5" class="moveEle"onkeydown="moveElement5()"></button></td>
+
+	</tr>
+	<tr>
+		<td><button type="button" id="button1"> </button></td>
+		<td><button type="button" id="button2"> </button></td>
+		<td><button type="button" id="button3"> </button></td>
+	 	<td><button type="button" id="button4"></button></td>
+	 	<td><button type="button" id="button5"></button></td>
+
+	</tr>
+
+	<tr>
+		<td><button type="button" id="button6"></button></td>
+		<td><button type="button" id="button7"></button></td>
+		<td><button type="button" id="button8"></button></td>
+	 	<td><button type="button" id="button9"></button></td>
+	 	<td><button type="button" id="button10"></button></td>
+
+	</tr>
+	<tr>
+		<td><button type="button" id="button11"></button></td>
+		<td><button type="button" id="button12"></button></td>
+		<td><button type="button" id="button13"></button></td>
+	 	<td><button type="button" id="button14"></button></td>
+	 	<td><button type="button" id="button15"></button></td>
+
+	</tr>
+	 <tr>
+	 	<td> <button type="button" id="button16"></button></td>
+	 	<td><button type="button" id="button17"></button></td>
+	 	<td><button type="button" id="button18"></button></td>
+	 	<td><button type="button" id="button19"></button></td>
+	 	<td><button type="button" id="button20"></button></td>
+	 </tr>
+	 <tr>
+	 	<td> <button type="button" id="button21"></button></td>
+	 	<td><button type="button" id="button22"></button></td>
+	 	<td><button type="button" id="button23"></button></td>
+	 	<td><button type="button" id="button24"></button></td>
+	 	<td><button type="button" id="button25"></button></td>
+	 </tr>
+</table>
+<script>
+	var initialColour;
+	var currentEle;
+	var currentColour;
+	var buttonNames = [["button1", "button2", "button3", "button4", "button5"],["button6","button7","button8","button9","button10"],["button11","button12","button13","button14","button15"],["button16","button17","button18","button19","button20"],["button21","button22","button23","button24","button25"] ]  
+	generateColour();
+	   function generateColour()
+	   {
+
+	   		var colourIndex = Math.floor((Math.random() * 4));
+	   		var colours =["red","blue","green","yellow"]
+	   		var randomColour =colours[colourIndex];
+	   		document.getElementById("moveEle3").style.background=randomColour;
+	   		document.getElementById("moveEle3").value=randomColour;
+	   		initialColour = randomColour;
+	   		currentEle = "moveEle3";
+	   		document.getElementById("moveEle3").focus();
+	   }
+
+	   function moveElement()
+	   {
+	   		    var event = window.event ? window.event : e;
+	   		    var keyCodeValue = event.keyCode;
+	   			var currentColor = document.getElementById("moveEle3").value
+
+	   		    if(keyCodeValue == 37)
+	   		    {
+	   		    	currentEle = "moveEle2";
+	   		    	document.getElementById("moveEle2").style.background=currentColor;
+	   				document.getElementById("moveEle2").value=currentColor;
+
+	   				document.getElementById("moveEle2").focus();
+
+	   		    	document.getElementById("moveEle3").style.background="white";
+	   				document.getElementById("moveEle3").value="";
+	   		    }    
+	   		    else if(keyCodeValue == 38)
+	   		    {
+                 
+	   		    }
+	   		    else if(keyCodeValue == 39)
+	   		    {
+	   				currentEle = "moveEle4";
+	   		    	document.getElementById("moveEle4").style.background=currentColor;
+	   				document.getElementById("moveEle4").value=currentColor;
+
+	   				document.getElementById("moveEle4").focus();
+
+	   		    	document.getElementById("moveEle3").style.background="white";
+	   				document.getElementById("moveEle3").value=""
+                       
+	   		    }
+	   		    else if (keyCodeValue == 40) 
+	   		    {
+	   		    	colourDown(2)
+	   		    	document.getElementById("moveEle3").style.background="white";
+	   				document.getElementById("moveEle3").value="";
+
+	   				generateColour();	
+	   		    }
+	   		
+	   }
+
+	   function moveElement2()
+	   {
+	   		    var event = window.event ? window.event : e;
+	   		    var keyCodeValue = event.keyCode;
+	   			var currentColor = document.getElementById("moveEle2").value
+
+	   		    if(keyCodeValue == 37)
+	   		    {
+	   		    	currentEle = "moveEle1";
+	   		    	document.getElementById("moveEle1").style.background=currentColor;
+	   				document.getElementById("moveEle1").value=currentColor;
+
+	   				document.getElementById("moveEle1").focus();
+
+	   		    	document.getElementById("moveEle2").style.background="white";
+	   				document.getElementById("moveEle2").value="";
+	   		    }    
+	   		    else if(keyCodeValue == 38)
+	   		    {
+                 
+	   		    }
+	   		    else if(keyCodeValue == 39)
+	   		    {
+	   				currentEle = "moveEle3";
+	   		    	document.getElementById("moveEle3").style.background=currentColor;
+	   				document.getElementById("moveEle3").value=currentColor;
+
+	   				document.getElementById("moveEle3").focus();
+
+	   		    	document.getElementById("moveEle2").style.background="white";
+	   				document.getElementById("moveEle2").value=""
+                       
+	   		    }
+	   		    else if (keyCodeValue == 40) 
+	   		    {
+	   		    	colourDown(1)
+	   		    	document.getElementById("moveEle2").style.background="white";
+	   				document.getElementById("moveEle2").value="";
+
+	   				generateColour();	
+	   		    }
+	   		
+	   }
+
+	   function moveElement1()
+	   {
+	   		    var event = window.event ? window.event : e;
+	   		    var keyCodeValue = event.keyCode;
+	   			var currentColor = document.getElementById("moveEle1").value
+
+	   		    if(keyCodeValue == 37)
+	   		    {
+	   		    
+	   		    }    
+	   		    else if(keyCodeValue == 38)
+	   		    {
+                 
+	   		    }
+	   		    else if(keyCodeValue == 39)
+	   		    {
+	   				currentEle = "moveEle2";
+	   		    	document.getElementById("moveEle2").style.background=currentColor;
+	   				document.getElementById("moveEle2").value=currentColor;
+
+	   				document.getElementById("moveEle2").focus();
+
+	   		    	document.getElementById("moveEle1").style.background="white";
+	   				document.getElementById("moveEle1").value=""
+                       
+	   		    }
+	   		    else if (keyCodeValue == 40) 
+	   		    {
+
+	   		    	colourDown(0);
+	   		    	document.getElementById("moveEle1").style.background="white";
+	   				document.getElementById("moveEle1").value="";
+
+	   				generateColour();	
+	   		    }
+	   	}
+
+	   function moveElement4()
+	   {
+	   		    var event = window.event ? window.event : e;
+	   		    var keyCodeValue = event.keyCode;
+	   			var currentColor = document.getElementById("moveEle4").value
+
+	   		    if(keyCodeValue == 37)
+	   		    {
+	   		    	currentEle = "moveEle3";
+	   		    	document.getElementById("moveEle3").style.background=currentColor;
+	   				document.getElementById("moveEle3").value=currentColor;
+
+	   				document.getElementById("moveEle3").focus();
+
+	   		    	document.getElementById("moveEle4").style.background="white";
+	   				document.getElementById("moveEle4").value="";
+	   		    }    
+	   		    else if(keyCodeValue == 38)
+	   		    {
+                 
+	   		    }
+	   		    else if(keyCodeValue == 39)
+	   		    {
+	   				currentEle = "moveEle5";
+	   		    	document.getElementById("moveEle5").style.background=currentColor;
+	   				document.getElementById("moveEle5").value=currentColor;
+
+	   				document.getElementById("moveEle5").focus();
+
+	   		    	document.getElementById("moveEle4").style.background="white";
+	   				document.getElementById("moveEle4").value=""
+                       
+	   		    }
+	   		    else if (keyCodeValue == 40) 
+	   		    {
+	   		    	colourDown(3);
+
+	   		    	document.getElementById("moveEle4").style.background="white";
+	   				document.getElementById("moveEle4").value="";
+
+	   				generateColour();	
+	   		    }
+	   		
+	   }	
+	   
+
+	   function moveElement5()
+	   {
+	   		    var event = window.event ? window.event : e;
+	   		    var keyCodeValue = event.keyCode;
+	   			var currentColor = document.getElementById("moveEle5").value
+
+	   		    if(keyCodeValue == 37)
+	   		    {
+	   		    	currentEle = "moveEle4";
+	   		    	document.getElementById("moveEle4").style.background=currentColor;
+	   				document.getElementById("moveEle4").value=currentColor;
+
+	   				document.getElementById("moveEle4").focus();
+
+	   		    	document.getElementById("moveEle5").style.background="white";
+	   				document.getElementById("moveEle5").value="";
+	   		    }    
+
+	   		    else if(keyCodeValue == 38)
+	   		    {
+                 
+	   		    }
+	   		    else if(keyCodeValue == 39)
+	   		    {
+	   			
+                       
+	   		    }
+	   		    else if (keyCodeValue == 40) 
+	   		    {
+                 colourDown(4);
+	   		    	document.getElementById("moveEle5").style.background="white";
+	   				document.getElementById("moveEle5").value="";
+
+	   				generateColour();	
+	   		    }
+	   		
+	   }
+	   
+      function colourDown(columnID)
+      {  
+
+         var colourBox=[[document.getElementById("button1").value, document.getElementById("button2").value,document.getElementById("button3").value,document.getElementById("button4").value,document.getElementById("button5").value],[document.getElementById("button6").value,document.getElementById("button7").value,document.getElementById("button8").value,document.getElementById("button9").value,document.getElementById("button10").value],[document.getElementById("button11").value,document.getElementById("button12").value,document.getElementById("button13").value,document.getElementById("button14").value,document.getElementById("button15").value],[document.getElementById("button16").value,document.getElementById("button17").value,document.getElementById("button18").value,document.getElementById("button19").value,document.getElementById("button20").value],[document.getElementById("button21").value,document.getElementById("button22").value,document.getElementById("button23").value,document.getElementById("button24").value,document.getElementById("button25").value]]
+			         
+
+         for(var i=4;i>-1;i--)
+         {
+         	var eachColumnName = buttonNames[i][columnID];
+         	var eachColumnValue = document.getElementById(eachColumnName).value;
+
+         	var eachColumnNumber = eachColumnName.replace("button","");
+	         eachColumnNumber = eval(eachColumnNumber);
+
+         	if(eachColumnValue == "white" || eachColumnValue == "")
+         	{
+
+         		document.getElementById(eachColumnName).style.background=initialColour;
+         		document.getElementById(eachColumnName).value=initialColour;
+         		
+         		var coordinates = findCoordinates(eachColumnNumber);
+
+	         	var leftIndex = coordinates[0];
+	         	var rightIndex = coordinates[1];
+	         	var downIndex = coordinates[2];
+
+	         	if(leftIndex != 0)
+	         	{
+	         		var leftColour = document.getElementById("button"+leftIndex).value;
+	         		var currentColor = initialColour;
+	         		var isValidColur = isValidColour(currentColor, leftColour);
+
+
+	         		if(leftColour != "" && leftColour != "white" && isValidColur)
+	         		{
+	         			//alert("insideValid" + leftIndex);
+	         			
+	         			document.getElementById("button"+leftIndex).style.background = "white";
+	         			document.getElementById("button"+leftIndex).value == "";
+
+	         			document.getElementById(eachColumnName).style.background="white";
+         				document.getElementById(eachColumnName).value="";
+
+         				swiftValue(i, columnID-1);
+         			
+	         		} 
+	         	}
+
+	         	if(rightIndex != 0)
+	         	{
+	         		var rightColour = document.getElementById("button"+rightIndex).value;
+	         		var currentColor = initialColour;
+	         		var isValidColur = isValidColour(currentColor, rightColour);
+
+
+	         		if(rightColour != "" && rightColour != "white" && isValidColur)
+	         		{
+	         			//alert("insideValid" + leftIndex);
+	         			
+	         			document.getElementById("button"+rightIndex).style.background = "white";
+	         			document.getElementById("button"+rightIndex).value == "";
+
+	         			document.getElementById(eachColumnName).style.background="white";
+         				document.getElementById(eachColumnName).value="";
+
+         				swiftValue(i, columnID+1);
+         			
+	         		}
+	         			
+	         	}
+
+
+	         	if(downIndex != 0)
+	         	{
+	         		var downColour = document.getElementById("button"+downIndex).value;
+	         		var currentColor = initialColour;
+	         		var isValidColur = isValidColour(currentColor, downColour);
+
+
+	         		if(downColour != "" && downColour != "white" && isValidColur)
+	         		{
+	         			//alert("insideValid" + leftIndex);
+	         			
+	         			document.getElementById("button"+downIndex).style.background = "white";
+	         			document.getElementById("button"+downIndex).value == "";
+
+	         			document.getElementById(eachColumnName).style.background="white";
+         				document.getElementById(eachColumnName).value="";
+         			
+	         		}
+	         		
+	         	}
+	         	
+
+
+         		break;
+         	}
+         	else if(eachColumnNumber > 0 && eachColumnNumber < 6)
+         	{
+         			alert("Game End!!!! Better luck next time!!!");
+	         		window.location.reload();
+         	}
+
+         }
+
+      }	 
+
+      function swiftValue(index, columnNumber)
+      {
+
+      	var previousColumn = buttonNames[index-1][columnNumber];
+      	var previousColumnValue = document.getElementById(previousColumn).value;
+      	var currentCell = buttonNames[index][columnNumber];
+
+      	for(var i=index-1;i>-1;i--)
+         {
+         	//alert( i + " currentCell : " + currentCell + " : " + previousColumn);
+         	document.getElementById(currentCell).style.background = previousColumnValue;
+         	document.getElementById(currentCell).value = previousColumnValue;
+
+         	if( i != 0)
+         	{
+         		previousColumn = buttonNames[i-1][columnNumber];
+         		previousColumnValue = document.getElementById(previousColumn).value;
+         		currentCell = buttonNames[i][columnNumber];
+         	}
+         		else
+         		{
+                  prerviousColumnValue ="white";
+
+
+         		}
+         //	alert("i : " + i + " : " + previousColumn + " : " + currentCell);
+         }
+      }
+
+      function isValidColour(currentColor, alternateColour)
+      {
+      	if((currentColor == "red" && alternateColour == "blue") || (currentColor == "blue" && alternateColour == "red"))
+      	{
+      		return true;
+      	}
+      	else if((currentColor == "red" && alternateColour == "yellow") || (currentColor == "yellow" && alternateColour == "red"))
+      	{
+      		return true;
+      	}
+      	else if((currentColor == "blue" && alternateColour == "green") || (currentColor == "green" && alternateColour == "blue"))
+      	{
+      		return true;
+      	}
+
+      	return
+      }           
+
+      function findCoordinates(columnNumber)
+      {
+
+      	var leftNumber=0;
+      	var rightNumber=0;
+      	var downNumber=0;
+
+      	if(columnNumber == 1 || columnNumber == 6 || columnNumber == 11 || columnNumber == 16 || columnNumber == 21)
+      	{
+      		leftNumber = 0	
+      	}
+      	else
+      	{
+      		leftNumber = columnNumber -1;
+      	}
+
+      	if(columnNumber % 5 == 0)
+      	{
+      		rightNumber = 0;
+      	}
+      	else
+      	{
+      		rightNumber = columnNumber + 1;
+      	}
+
+      	if(columnNumber > 20 && columnNumber < 26)
+      	{
+      		downNumber = 0;
+      	}
+      	else
+      	{
+      		downNumber = columnNumber + 5;
+      	}
+
+      	return [leftNumber, rightNumber, downNumber];
+
+      }
+
+</script>
+
+</html>
